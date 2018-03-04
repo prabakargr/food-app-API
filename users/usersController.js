@@ -19,7 +19,7 @@ var registerUser=function(req,res){
 var loginUser=function(req,res){
     var loginDetails={
         email:req.body.email,
-        password:req.body.password
+        dob:req.body.dob
     }
 User.find(loginDetails,function(err,user){
     if(!err){
