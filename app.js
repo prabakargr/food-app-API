@@ -8,6 +8,10 @@ var db=mongoose.connect("mongodb://food:app@ds251598.mlab.com:51598/foodapp");
 
 var usersRouting=require('./users/usersRouting');
 
+var cooksRouting=require('./cook/cooksRouting');
+
+var customersRouting=require('./customer/customersRouting');
+
 var app=express();
 
 app.use(bodyParser.json());
@@ -20,6 +24,10 @@ app.use(function(req, res, next) {
 });
 
 app.use('/users',usersRouting);
+
+app.use('/cooks',cooksRouting);
+
+app.use('/customers',customersRouting);
 
 var port=process.env.PORT || 9000;
 
