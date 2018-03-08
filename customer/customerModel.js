@@ -9,8 +9,9 @@ var customerModel=new Schema({
         kerala:String,
         briyani:String,
         cafeDesertsBakery:String,
-        chetinad:String,
-        northIndian:String
+        chettinad:String,
+        northIndian:String,
+        location:String,
     }
 })
 
