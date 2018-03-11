@@ -11,7 +11,7 @@ var customerModel=new Schema({
         cafeDesertsBakery:String,
         chettinad:String,
         northIndian:String,
-        location:String,
+        location:String
     }
 })
 

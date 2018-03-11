@@ -4,6 +4,8 @@ var mongoose=require('mongoose');
 
 var bodyParser=require('body-parser');
 
+var fileUpload = require('express-fileupload');
+
 var db=mongoose.connect("mongodb://food:app@ds251598.mlab.com:51598/foodapp");
 
 var usersRouting=require('./users/usersRouting');
@@ -22,6 +24,8 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+app.use(fileUpload());
 
 app.use('/users',usersRouting);
 
