@@ -17,7 +17,8 @@ var customersRouting=require('./customer/customersRouting');
 var app=express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies.
+app.use(bodyParser.json({limit: '5mb'}));
 
 app.use(function(req, res, next) {  
     res.header('Access-Control-Allow-Origin', req.headers.origin);

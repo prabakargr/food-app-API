@@ -1,5 +1,10 @@
 var Cook=require('./cookModel');
 
+
+
+
+
+
 // var cookDetails=function(req,res){
 //     var cook=new Cook(req.body);
 //     console.log(cook);
@@ -20,14 +25,20 @@ var cookDetails=function(req,res){
   }
   let photos=req.files.photos;
 console.log(photos);
-  photos.mv('../imgs/Koala.jpg',function(err){
-      if(!err){
-          res.send('done')
-      }else{
-          res.send('err')
-      }
-  })
+  photos.mv('../imgs/hhhh.jpg',function(err){
+    //   cook.save(photos,function(err,photo){
+    //       console.log(photo);
+    if(!err){
+        res.send('done')
+    }else{
+        res.send('err')
+    }
+      })
+      
+//   })
 }
+
+
 module.exports={
     cookDetails:cookDetails
 }
