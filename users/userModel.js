@@ -2,9 +2,9 @@ var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
 var userModel=new Schema({
-    username:String,
+    name:String,
     email:String,
-    password:String,
+    pass:String,
     dob:String,
     location:String
 });
