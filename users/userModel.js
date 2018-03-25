@@ -2,11 +2,9 @@ var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
 var userModel=new Schema({
-    name:String,
-    email:String,
-    pass:String,
-    dob:String,
-    location:String
+    username:String,
+    emailid:String,
+    password:String
 });
 
 module.exports=mongoose.model("user",userModel);

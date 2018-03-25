@@ -6,10 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "permissions": [
+    "http://www.google.com/",
+    "https://www.google.com/"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-fileupload": "^0.4.0",
     "mongodb": "^3.0.3",
