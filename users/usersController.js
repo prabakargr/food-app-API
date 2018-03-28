@@ -18,8 +18,8 @@ var registerUser=function(req,res){
 
 var loginUser=function(req,res){
     var loginDetails={
-        email:req.body.email,
-        dob:req.body.dob
+        emailid:req.body.emailid,
+        password:req.body.password
     }
 User.find(loginDetails,function(err,user){
     if(!err){

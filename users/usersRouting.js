@@ -5,7 +5,7 @@ var usersController=require('./usersController');
 var usersRouting=express.Router();
 
 
-usersRouting.route('/reqisterUser')
+usersRouting.route('/registerUser')
    .post(usersController.registerUser);
 
 usersRouting.route('/login')
