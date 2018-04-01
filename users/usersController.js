@@ -22,10 +22,10 @@ var loginUser=function(req,res){
         password:req.body.password
     }
 User.find(loginDetails,function(err,user){
-    if(!err){
-        res.status(200).send(user);
+    if(err){
+        res.status(404).send('cannot match');
     }else{
-        res.status(500).send('connot find match');
+        res.status(200).send(user);
     }
 })
 
