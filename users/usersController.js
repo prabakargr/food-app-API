@@ -14,8 +14,22 @@ app.set('superSecret', config.secret);
 
 //register user
 
-var registerUser=function(req,res){
-    var user=new User(req.body);
+
+var registerUser = function(req, res){
+  var token = req.headers['auth-token'];
+
+  if (token) {
+
+      // verifies secret and checks exp
+      jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+        if (err) {
+          return res.json({ success: false, message: 'Failed to authenticate token.' });    
+        } else {
+          // if everything is good, save to request for use in other routes
+          // req.decoded = decoded;    
+          // next();
+         
+          var user=new User(req.body);
     user.save(function(err,user){
         console.log(user);
         if(!err){
@@ -24,24 +38,35 @@ var registerUser=function(req,res){
             res.status(500).send('connot register');
         }
     });
-};
+        }
+      });
+  
+    } else {
+  
+      // if there is no token
+      // return an error
+      return res.status(403).send({ 
+          success: false, 
+          message: 'No token provided.' 
+      });
 
-//login and get the user object
 
-// var loginUser=function(req,res){
-//     var loginDetails={
-//         emailid:req.body.emailid,
-//         password:req.body.password
-//     }
-// User.find(loginDetails,function(err,user){
-//     if(err){
-//         res.status(404).send('cannot match');
-//     }else{
-//         res.status(200).send(user);
-//     }
-// })
+  };
+  
+}
 
-// }
+// var registerUser=function(req,res){
+//     var user=new User(req.body);
+//     user.save(function(err,user){
+//         console.log(user);
+//         if(!err){
+//             res.status(200).send(user);
+//         }else{
+//             res.status(500).send('connot register');
+//         }
+//     });
+// };
+
 var loginUser=function(req, res) {
 
     // find the user
@@ -64,7 +89,8 @@ var loginUser=function(req, res) {
           // create a token with only our given payload
       // we don't want to pass in the entire user since that has the password
       const payload = {
-        admin: user.admin 
+        user:user
+
       };
           var token = jwt.sign(payload, app.get('superSecret'), {
             // expiresInMinutes: 1440 // expires in 24 hours

@@ -6,6 +6,10 @@ var bodyParser=require('body-parser');
 
 var cors = require('cors');
 
+var morgan = require('morgan');
+
+var jwt=require('jsonwebtoken');
+
 var fileUpload = require('express-fileupload');
 
 var db=mongoose.connect("mongodb://food:app@ds251598.mlab.com:51598/foodapp");
@@ -23,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 
 app.use(function(req, res, next) {  
     res.header('Access-Control-Allow-Origin', req.headers.origin);
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, auth-token");
     next();
 });
 
